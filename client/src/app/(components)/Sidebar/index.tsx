@@ -2,6 +2,7 @@
 
 import { useAppDispatch, useAppSelector } from "@/app/redux";
 import { setIsSidebarCollapsed } from "@/state";
+import { useGetProjectsQuery } from "@/state/api";
 import {
   AlertCircleIcon,
   AlertOctagonIcon,
@@ -10,13 +11,13 @@ import {
   ChevronDownIcon,
   ChevronUpIcon,
   HomeIcon,
-  Icon,
   Layers3Icon,
   LockIcon,
   LucideIcon,
   SearchIcon,
   SettingsIcon,
   ShieldAlertIcon,
+  SquareChartGanttIcon,
   UserIcon,
   UsersIcon,
   XCircleIcon,
@@ -29,6 +30,8 @@ import { useState } from "react";
 const Sidebar = () => {
   const [showProjects, setShowProjects] = useState(true);
   const [showPriority, setShowPriority] = useState(true);
+
+  const { data: projects } = useGetProjectsQuery();
 
   const dispatch = useAppDispatch();
 
@@ -95,6 +98,15 @@ const Sidebar = () => {
             <ChevronDownIcon className="h-6 w-6" />
           )}
         </button>
+        {showProjects &&
+          projects?.map((project) => (
+            <SidebarLink
+              key={project.id}
+              icon={SquareChartGanttIcon}
+              label={project.name}
+              href={`/projects/${project.id}`}
+            />
+          ))}
 
         {/*------ Priority Lists -------*/}
         <button

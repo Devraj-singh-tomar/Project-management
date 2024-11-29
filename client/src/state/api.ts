@@ -28,7 +28,7 @@ export interface User {
   userId?: number;
   username: string;
   email: string;
-  profilePictureurl?: string;
+  profilePictureUrl?: string;
   cognitoId?: string;
   teamId: number;
 }
@@ -106,7 +106,7 @@ export const api = createApi({
       invalidatesTags: ["Tasks"],
     }),
 
-    updateTask: build.mutation<Task, { taskId: number; status: string }>({
+    updateTaskStatus: build.mutation<Task, { taskId: number; status: string }>({
       query: ({ taskId, status }) => ({
         url: `tasks/${taskId}/status`,
         method: "PATCH",
@@ -128,5 +128,5 @@ export const {
   useCreateProjectMutation,
   useGetTasksQuery,
   useCreateTaskMutation,
-  useUpdateTaskMutation,
+  useUpdateTaskStatusMutation,
 } = api;
