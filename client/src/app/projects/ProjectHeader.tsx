@@ -4,11 +4,13 @@ import {
   Grid3x3Icon,
   Grid3X3Icon,
   ListIcon,
+  PlusIcon,
   Share2Icon,
   Table2,
 } from "lucide-react";
 import React, { useState } from "react";
 import Header from "../(components)/Header";
+import ModalNewProject from "./ModalNewProject";
 
 type Props = {
   activeTab: string;
@@ -20,13 +22,28 @@ const ProjectHeader = ({ activeTab, setActiveTab }: Props) => {
 
   return (
     <div className="px-4 xl:px-6">
-      {/* MODAL NEW PROJECT */}
+      {/*----------- MODAL NEW PROJECT  ----------*/}
+      <ModalNewProject
+        isOpen={isModalNewProjectOpen}
+        onClose={() => setIsModalNewProjectOpen(false)}
+      />
 
       <div className="lgpb:4 pb-6 pt-6 lg:pt-8">
-        <Header name="project development" />
+        <Header
+          name="project development"
+          buttonComponent={
+            <button
+              className="flex items-center rounded-md bg-blue-primary px-3 py-2 font-semibold text-white hover:bg-blue-600"
+              onClick={() => setIsModalNewProjectOpen(true)}
+            >
+              <PlusIcon className="mr-2 h-6 w-6" />
+              New Project
+            </button>
+          }
+        />
       </div>
 
-      {/* TAB's */}
+      {/*---------- TAB's -----------*/}
       <div className="flex flex-wrap-reverse gap-2 border-y border-gray-200 pb-[8px] pt-2 dark:border-stroke-dark md:items-center">
         <div className="flex flex-1 items-center gap-2 md:gap-4">
           <TabButton
