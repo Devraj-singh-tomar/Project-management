@@ -6,6 +6,7 @@ import Board from "../BoardView";
 import ListView from "../ListView";
 import Timeline from "../TimelineView";
 import Table from "../TableView";
+import ModalNewTask from "@/app/(components)/ModalNewTask";
 
 type Props = {
   params: { id: string };
@@ -19,7 +20,13 @@ const Project = ({ params }: Props) => {
 
   return (
     <div>
-      {/* MODAL NEW TASKS */}
+      {/*---------- MODAL NEW TASKS ------------*/}
+      <ModalNewTask
+        isOpen={isModalNewTaskOpen}
+        onClose={() => setIsModalNewTaskOpen(false)}
+        id={id}
+      />
+
       <ProjectHeader activeTab={activeTab} setActiveTab={setActiveTab} />
 
       {activeTab === "Board" && (
