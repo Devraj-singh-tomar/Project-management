@@ -1,8 +1,5 @@
-"use client";
-
 import React from "react";
 import Header from "../(components)/Header";
-import { text } from "stream/consumers";
 
 const Settings = () => {
   const userSettings = {

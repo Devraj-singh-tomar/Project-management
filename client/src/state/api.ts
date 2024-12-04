@@ -72,10 +72,10 @@ export const api = createApi({
 
   reducerPath: "api",
 
-  tagTypes: ["Projects", "Tasks"],
+  tagTypes: ["Projects", "Tasks", "Users"],
 
   endpoints: (build) => ({
-    // PROJECT --------------------------------------------
+    // PROJECT -------------------------------------------//
 
     getProjects: build.query<Project[], void>({
       query: () => "projects",
@@ -92,7 +92,7 @@ export const api = createApi({
       invalidatesTags: ["Projects"],
     }),
 
-    // TASK -----------------------------------------------
+    // TASK ---------------------------------------------//
 
     getTasks: build.query<Task[], { projectId: number }>({
       query: ({ projectId }) => `tasks?projectId=${projectId}`,
@@ -127,10 +127,17 @@ export const api = createApi({
       ],
     }),
 
-    // Search -------------------------------//
+    // SEARCH -----------------------------------------//
 
     search: build.query<SearchResults, string>({
       query: (query) => `search?query=${query}`,
+    }),
+
+    // USER -------------------------------------------//
+
+    getUsers: build.query<User[], void>({
+      query: () => "users",
+      providesTags: ["Users"],
     }),
   }),
 });
@@ -142,4 +149,5 @@ export const {
   useCreateTaskMutation,
   useUpdateTaskStatusMutation,
   useSearchQuery,
+  useGetUsersQuery,
 } = api;
