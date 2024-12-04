@@ -38,7 +38,7 @@ const Search = () => {
         <input
           type="text"
           placeholder="Search..."
-          className="w-1/2 rounded border p-3 shadow"
+          className="w-1/2 rounded border p-3 shadow focus:outline-none dark:border-dark-secondary dark:bg-gray-700 dark:text-white dark:placeholder:text-white"
           onChange={handleSearch}
         />
       </div>
