@@ -1,8 +1,8 @@
-import React from "react";
+import React, { ReactElement } from "react";
 
 type Props = {
   name: string;
-  buttonComponent?: any;
+  buttonComponent?: ReactElement;
   isSmallText?: boolean;
 };
 
